@@ -1,4 +1,4 @@
-# project MODEL 28
+# Project MODEL 28
 
 ## Dataset Description
 Our group will be using the Intel Image Classification Dataset, a publicly available Kaggle collection of approximately 24,000 RGB images at a uniform 150×150‐pixel resolution. The data are organized into six classes‐named subdirectories—buildings, forest, glacier, mountain, sea, and street—each assigned integer labels 0 through 5. The original download provides separate seg_train and seg_test folders (roughly 14,000 training and 3,000 testing images), and we will further split the training set 80/20 for validation. All files are in JPEG format, balanced across classes, and require no additional annotation, making this dataset straightforward to load, preprocess, and feed into our flattened‐pixel (67,500‐feature) and CNN pipelines.
@@ -94,4 +94,4 @@ print("y shape:", y.shape)   # (N,)
 
 ---
 
-Once this step is complete, you're ready to move on to model building and analysis. 🚀
+Once this step is complete, you're ready to move on to model building and analysis.
