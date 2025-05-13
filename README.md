@@ -103,8 +103,29 @@ So install flask in your preferred virtual environment using the following comma
 ```
 conda install anaconda::flask
 ```
+### Testing Logistic Regression Model:
+For logistic regression,  
+You can train the model in the `logistic_regression.ipynb` and get the weights in `intel_clf.joblib` and `intel_le.joblib`.
+
+Next,  
 `flask_logreg.py` has the flask implementation and testing. `templates/index.html` has the implementation of the website.
 For now, there is only logistic regression model available. Go to models/logreg/ and run the code below to check it out:
 ```
 python flask_logreg.py
 ```
+### Testing Multi-Layered Perceptron Model:
+For MLP,  
+You will have to train the model and create a best_mlp.h5 file for your model.   
+For doing so, go to models/mlp and run:  
+```
+python train_mlp_taylor_submission_non_ipynb.py
+```
+Next,  
+`templates/index.html` has the implementation of the website.
+To run the website + flask, go to models/mlp and run the code below for html+flask testing or demo environment:
+```
+python flask_mlp.py
+```
+
+### Testing CNN Model:
+Under Construction!  
