@@ -1,2 +1,4 @@
 # ignore the large MLP model
 models/mlp/best_mlp.h5
+models/mlp/X.npy
+models/mlp/y.npy
