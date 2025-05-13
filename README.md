@@ -95,3 +95,16 @@ print("y shape:", y.shape)   # (N,)
 ---
 
 Once this step is complete, you're ready to move on to model building and analysis.
+
+
+## Testing the model
+**We will use flask to run and test our models. **
+So install flask in your preferred virtual environment using the following command:
+```
+conda install anaconda::flask
+```
+`flask_logreg.py` has the flask implementation and testing. `templates/index.html` has the implementation of the website.
+For now, there is only logistic regression model available. Go to models/logreg/ and run the code below to check it out:
+```
+python flask_logreg.py
+```
