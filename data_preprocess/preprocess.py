@@ -14,7 +14,7 @@ def preprocess(input_dir: str,
     2) Resizes every image to `target_size`
     3) Flattens and normalizes into two .npy files: features X and labels y
     """
-    print("🚀 preprocess() has started!")
+    print("preprocess() has started!")
     # --- find class names (only directories) ---
     classes = [
         d for d in os.listdir(input_dir)
@@ -55,7 +55,7 @@ def preprocess(input_dir: str,
     np.save(out_y, y)
     print(f"Saved X.shape={X.shape} → {out_X}")
     print(f"Saved y.shape={y.shape} → {out_y}")
-    print("✅ preprocess() has finished!")
+    print("preprocess() has finished!")
 
 if __name__=="__main__":
     import argparse

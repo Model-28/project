@@ -1,18 +1,18 @@
-# project MODEL 28
+# Project MODEL 28
 
 ## Dataset Description
 Our group will be using the Intel Image Classification Dataset, a publicly available Kaggle collection of approximately 24,000 RGB images at a uniform 150×150‐pixel resolution. The data are organized into six classes‐named subdirectories—buildings, forest, glacier, mountain, sea, and street—each assigned integer labels 0 through 5. The original download provides separate seg_train and seg_test folders (roughly 14,000 training and 3,000 testing images), and we will further split the training set 80/20 for validation. All files are in JPEG format, balanced across classes, and require no additional annotation, making this dataset straightforward to load, preprocess, and feed into our flattened‐pixel (67,500‐feature) and CNN pipelines.
 
-## 🧼 Data Preprocessing
+## Data Preprocessing
 
 Before training any model, you need to preprocess the raw image data. Follow the steps below to generate ready-to-use `.npy` files for your assignments.
 
 ---
 
-### 📦 Download the data from Kaggle
+### Download the data from Kaggle
 
 Download the **Intel Image Classification Dataset** from Kaggle:  
-👉 [https://www.kaggle.com/datasets/puneet6060/intel-image-classification](https://www.kaggle.com/datasets/puneet6060/intel-image-classification)
+-> [https://www.kaggle.com/datasets/puneet6060/intel-image-classification](https://www.kaggle.com/datasets/puneet6060/intel-image-classification)
 
 After downloading:
 - Unzip the dataset
@@ -21,7 +21,7 @@ After downloading:
 
 ---
 
-### ✅ Step 1: Go to the project root directory
+### 1: Go to the project root directory
 
 Open your terminal and make sure you are in the **root directory of the project**.  
 To verify, run:
@@ -40,7 +40,7 @@ then you are in the correct place.
 
 ---
 
-### ⚙️ Step 2: Run the preprocessing script
+### 2. Run the preprocessing script
 
 Run this command:
 
@@ -59,18 +59,18 @@ This will:
 
 ---
 
-### 📂 What are X.npy and y.npy?
+### What are X.npy and y.npy?
 
 | File     | Shape                      | Contents                                  | Used for                             |
 |----------|----------------------------|-------------------------------------------|--------------------------------------|
 | `X.npy`  | `(N, 150×150×3)` → `(N, 67500)` | Flattened, normalized RGB image data     | Input features for MLP, LogReg, CNN  |
 | `y.npy`  | `(N,)`                     | Integer class labels (e.g., 0–5)          | Target labels for classification     |
 
-> 📝 These arrays will be the basis for your exploratory data analysis (EDA), training, validation, and testing.
+> These arrays will be the basis for your exploratory data analysis (EDA), training, validation, and testing.
 
 ---
 
-### 📥 Step 3: Load the `.npy` files in your script
+### 3. Load the `.npy` files in your script
 
 Once you've run the command above, you can load the data in any script like this:
 
@@ -94,4 +94,38 @@ print("y shape:", y.shape)   # (N,)
 
 ---
 
-Once this step is complete, you're ready to move on to model building and analysis. 🚀
+Once this step is complete, you're ready to move on to model building and analysis.
+
+
+## Testing the model
+**We will use flask to run and test our models. **
+So install flask in your preferred virtual environment using the following command:
+```
+conda install anaconda::flask
+```
+### Testing Logistic Regression Model:
+For logistic regression,  
+You can train the model in the `logistic_regression.ipynb` and get the weights in `intel_clf.joblib` and `intel_le.joblib`.
+
+Next,  
+`flask_logreg.py` has the flask implementation and testing. `templates/index.html` has the implementation of the website.
+For now, there is only logistic regression model available. Go to models/logreg/ and run the code below to check it out:
+```
+python flask_logreg.py
+```
+### Testing Multi-Layered Perceptron Model:
+For MLP,  
+You will have to train the model and create a best_mlp.h5 file for your model.   
+For doing so, go to models/mlp and run:  
+```
+python train_mlp_taylor_submission_non_ipynb.py
+```
+Next,  
+`templates/index.html` has the implementation of the website.
+To run the website + flask, go to models/mlp and run the code below for html+flask testing or demo environment:
+```
+python flask_mlp.py
+```
+
+### Testing CNN Model:
+Under Construction!  
