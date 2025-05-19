@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intel Classifier Demo</title>
+  <style>
+    /* page background and centering */
+    body {
+      background-color: #c8dce8;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* white card container */
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    /* file input styling */
+    input[type="file"] {
+      display: block;
+      margin: 1rem auto;
+    }
+
+    /* live preview */
+    img#preview {
+      display: none;
+      margin: 1rem 0;
+      max-width: 100%;
+      border-radius: 4px;
+    }
+
+    /* button styling */
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #4a90e2;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #357abd;
+    }
+
+    /* result text */
+    .result {
+      margin-top: 1.5rem;
+      color: #333;
+    }
+    .result p {
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Intel Classifier Demo</h2>
+    <h2>(Logictic Regression)</h2>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <input
+        type="file"
+        name="image"
+        accept="image/*"
+        onchange="showPreview(event)"
+        required
+      >
+      <img id="preview" alt="Image preview">
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+      <div class="result">
+        <p><strong>Prediction:</strong> {{ prediction }}</p>
+        <p><strong>Confidence:</strong> {{ confidence }}</p>
+      </div>
+    {% endif %}
+  </div>
+
+  <script>
+    function showPreview(event) {
+      const preview = document.getElementById('preview');
+      const file = event.target.files[0];
+      if (!file) {
+        preview.style.display = 'none';
+        return;
+      }
+      preview.src = URL.createObjectURL(file);
+      preview.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intel MLP Classifier</title>
+  <style>
+    body {
+      background-color: #c8dce8;
+      font-family: Arial, sans-serif;
+      display: flex; align-items: center; justify-content: center;
+      height: 100vh; margin: 0;
+    }
+    .container {
+      background: #fff; padding: 2rem; border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;
+      width: 90%; max-width: 400px;
+    }
+    input[type="file"] { display: block; margin: 1rem auto; }
+    img#preview {
+      display: none; margin: 1rem 0; max-width: 100%; border-radius: 4px;
+    }
+    button {
+      padding: 0.75rem 1.5rem; font-size: 1.1rem;
+      border: none; border-radius: 4px; background-color: #4a90e2;
+      color: #fff; cursor: pointer; transition: background-color 0.2s;
+    }
+    button:hover { background-color: #357abd; }
+    .result { margin-top: 1.5rem; color: #333; display: none; }
+    .result p { margin: 0.5rem 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Intel MLP Classifier</h2>
+    <form id="uploadForm">
+      <input id="fileInput" type="file" accept="image/*" onchange="showPreview(event)" required>
+      <img id="preview" alt="Image preview">
+      <button type="submit">Predict</button>
+    </form>
+
+    <div id="result" class="result">
+      <p><strong>Prediction:</strong> <span id="predText"></span></p>
+      <p><strong>Confidence:</strong> <span id="confText"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function showPreview(e) {
+      const preview = document.getElementById('preview');
+      const file = e.target.files[0];
+      if (!file) return preview.style.display = 'none';
+      preview.src = URL.createObjectURL(file);
+      preview.style.display = 'block';
+    }
+
+    document.getElementById('uploadForm')
+      .addEventListener('submit', async e => {
+        e.preventDefault();
+        const input = document.getElementById('fileInput');
+        if (!input.files.length) return;
+        const formData = new FormData();
+        formData.append('image', input.files[0]);
+
+        const res = await fetch('/predict_file', { method: 'POST', body: formData });
+        const data = await res.json();
+        if (data.error) return alert(data.error);
+
+        document.getElementById('predText').innerText = data.prediction;
+        document.getElementById('confText').innerText = data.confidence;
+        document.getElementById('result').style.display = 'block';
+      });
+  </script>
+</body>
+</html>
