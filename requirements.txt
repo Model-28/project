@@ -1,0 +1,9 @@
+numpy>=1.24           # array operations
+pillow>=9.0           # PIL.Image
+tqdm>=4.64            # progress bars
+tensorflow-macos      # Apple-optimized TF (includes tf.keras)
+tensorflow-metal      # Metal GPU plugin for Apple Silicon
+scikit-learn>=1.2     # train_test_split, GridSearchCV, LabelEncoder
+matplotlib>=3.5       # plotting (plt)
+seaborn
+flask
