@@ -115,7 +115,7 @@ python flask_logreg.py
 ```
 ### Testing Multi-Layered Perceptron Model:
 For MLP,  
-You will have to train the model and create a best_mlp.h5 file for your model.   
+You will have to train the model and create a best_mlp.h5 file to save your model.   
 For doing so, go to models/mlp and run:  
 ```
 python train_mlp_taylor_submission_non_ipynb.py
@@ -128,4 +128,11 @@ python flask_mlp.py
 ```
 
 ### Testing CNN Model:
-Under Construction!  
+For testing CNN, 
+You will have to train the model and create a best_model.keras file to save your model. 
+For doing so, open the `cnn_training.ipynb` under `models/cnn/` and run all the cells.  
+  
+Now we have a saved model. Then make sure you are in `models/cnn` directory and run the following:
+```
+python cnn_flask.py
+```  
