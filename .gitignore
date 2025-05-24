@@ -5,3 +5,4 @@ models/mlp/y.npy
 models/cnn/X.npy
 models/cnn/y.npy
 models/cnn/best_model.keras
+.venv/
