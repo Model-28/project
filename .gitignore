@@ -7,3 +7,6 @@ models/cnn/y.npy
 models/cnn/best_model.keras
 .venv/
 .vscode/
+# macOS folder‐view files
+.DS_Store
+**/.DS_Store
