@@ -136,3 +136,12 @@ Now we have a saved model. Then make sure you are in `models/cnn` directory and 
 ```
 python cnn_flask.py
 ```  
+
+# Testing the project
+For testing the project, go to `flask_deploy` directory and you will see an `app.py` file.  
+Then run:
+```
+python app.py
+```
+This will provide you with a link http://127.0.0.1:3000 or similar.   
+Click on that link, and you will be able to test all three model predictions for the image you uploaded. 
