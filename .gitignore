@@ -1,12 +1,10 @@
 # ignore the large MLP model
-models/mlp/best_mlp.h5
-models/mlp/X.npy
-models/mlp/y.npy
-models/cnn/X.npy
-models/cnn/y.npy
-models/cnn/best_model.keras
 .venv/
 .vscode/
 # macOS folder‐view files
 .DS_Store
 **/.DS_Store
+**/best_mlp.h5
+**/best_model.keras
+**/train_logreg.h5
+*.npy
