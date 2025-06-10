@@ -1,0 +1,4 @@
+best_mlp.h5 filter=lfs diff=lfs merge=lfs -text
+classes.npy filter=lfs diff=lfs merge=lfs -text
+train_logreg.h5 filter=lfs diff=lfs merge=lfs -text
+best_cnn.keras filter=lfs diff=lfs merge=lfs -text
