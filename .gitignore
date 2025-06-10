@@ -4,7 +4,6 @@
 # macOS folder‐view files
 .DS_Store
 **/.DS_Store
-**/best_mlp.h5
-**/best_model.keras
-**/train_logreg.h5
-*.npy
+/models/**/*.h5
+/models/**/*.keras
+/models/**/*.npy

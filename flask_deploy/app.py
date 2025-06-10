@@ -12,7 +12,7 @@ from flask import Flask, request, render_template
 
 # ─── CONFIG ─────────────────────────────────────────────────────────────────────
 BASE_DIR            = os.path.dirname(os.path.abspath(__file__))
-CNN_MODEL_PATH      = os.path.join(BASE_DIR, "best_model.keras")
+CNN_MODEL_PATH      = os.path.join(BASE_DIR, "best_cnn.keras")
 MLP_MODEL_PATH      = os.path.join(BASE_DIR, "best_mlp.h5")
 LOGREG_MODEL_PATH   = os.path.join(BASE_DIR, "train_logreg.h5")
 RAW_DIR             = os.path.abspath(os.path.join(
@@ -43,7 +43,7 @@ def preprocess_cnn(stream):
 def preprocess_mlp(stream):
     img = Image.open(stream).convert("RGB").resize(IMG_SIZE_MLP)
     arr = np.array(img, dtype=np.float32)
-    return arr.flatten()[np.newaxis, ...]
+    return arr.flatten()[np.newaxis, ...] / 255.0
 
 def preprocess_logreg(stream):
     img = Image.open(stream).convert("RGB").resize(IMG_SIZE_LOGREG)
@@ -68,21 +68,21 @@ def index():
             pc = cnn_model.predict(Xc)
             ic = int(np.argmax(pc, axis=1)[0])
             cnn_pred = class_names[ic]
-            cnn_conf = f"{float(pc[0,ic]):.3f}"
+            cnn_conf = f"{float(pc[0, ic]) * 100:.2f}%"
 
             # MLP inference
             Xm = preprocess_mlp(io.BytesIO(data))
             pm = mlp_model.predict(Xm)
             im = int(np.argmax(pm, axis=1)[0])
             mlp_pred = class_names[im]
-            mlp_conf = f"{float(pm[0,im]):.3f}"
+            mlp_conf = f"{float(pm[0, im]) * 100:.2f}%"
 
             # Logistic regression inference
             Xl = preprocess_logreg(io.BytesIO(data))
             pl = logreg_model.predict(Xl)
             il = int(np.argmax(pl, axis=1)[0])
             logreg_pred = class_names[il]
-            logreg_conf = f"{float(np.max(pl)):.3f}"
+            logreg_conf = f"{float(np.max(pl)) * 100:.2f}%"
 
     return render_template(
         "index.html",

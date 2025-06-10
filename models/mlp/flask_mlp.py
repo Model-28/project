@@ -60,7 +60,7 @@ def predict_file():
 
     return jsonify(
         prediction=class_names[idx],
-        confidence=float(probs[0, idx])
+        confidence=f"{float(probs[0, idx]) * 100:.2f}%"
     )
 
 if __name__ == "__main__":

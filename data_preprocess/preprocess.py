@@ -23,6 +23,9 @@ def preprocess(input_dir: str,
     classes.sort()
     print("Classes:", classes)
 
+    # >>> SAVE the canonical order so training *and* Flask can reload it
+    np.save("classes.npy", classes)            #  ← add this line
+
     # --- resize all images in place ---
     for root, _, files in os.walk(input_dir):
         for fname in files:
@@ -61,7 +64,7 @@ if __name__=="__main__":
     import argparse
 
     # set your one‑time defaults here:
-    DEFAULT_INPUT = "archive/seg_train/seg_train"
+    DEFAULT_INPUT = "../../archive/seg_train/seg_train"
     DEFAULT_SIZE  = (150,150)
     DEFAULT_X     = "X.npy"
     DEFAULT_Y     = "y.npy"
