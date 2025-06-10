@@ -3,6 +3,50 @@
 ## Dataset Description
 Our group will be using the Intel Image Classification Dataset, a publicly available Kaggle collection of approximately 24,000 RGB images at a uniform 150×150‐pixel resolution. The data are organized into six classes‐named subdirectories—buildings, forest, glacier, mountain, sea, and street—each assigned integer labels 0 through 5. The original download provides separate seg_train and seg_test folders (roughly 14,000 training and 3,000 testing images), and we will further split the training set 80/20 for validation. All files are in JPEG format, balanced across classes, and require no additional annotation, making this dataset straightforward to load, preprocess, and feed into our flattened‐pixel (67,500‐feature) and CNN pipelines.
 
+## Project Demo
+We have demonstrated the working of the project as well as a walkthrough on how to run the web application on your own development machine once cloned!  
+-> [Intel Classifier Dataset Project Demo](https://www.youtube.com/watch?v=trj_Kn91iGM)
+
+## Clone the repo
+Use the https or ssh link to clone the repo to train the models or test the models that we have already trained.  
+
+### ⚠️ Git LFS Notice: Large Model Files
+
+This project uses **[Git Large File Storage (LFS)](https://git-lfs.github.com/)** to manage large model files such as:
+
+- `best_mlp.h5`
+- `best_model.keras`
+- `classes.npy`
+- `train_logreg.h5`
+
+These files are required for the Flask demos in the `/flask_deploy/` directory.
+
+> ⚠️ **Before cloning or pulling this repository, please make sure Git LFS is installed on your system.**
+
+#### ✅ To install Git LFS:
+
+**macOS (with Homebrew):**
+```bash
+brew install git-lfs
+git lfs install
+```
+
+**Ubuntu/Debian:**  
+```
+sudo apt update
+sudo apt install git-lfs
+git lfs install
+```
+
+**Windows:**  
+Download and install from  https://git-lfs.github.com  
+Then clone repository as usual:  
+```
+git clone https://github.com/yourusername/your-repo.git
+```
+Git LFS will automatically fetch the required model files when you clone or pull.
+
+
 ## Data Preprocessing
 
 Before training any model, you need to preprocess the raw image data. Follow the steps below to generate ready-to-use `.npy` files for your assignments.
@@ -145,39 +189,3 @@ python app.py
 ```
 This will provide you with a link http://127.0.0.1:3000 or similar.   
 Click on that link, and you will be able to test all three model predictions for the image you uploaded. 
-
-# Git LFS Notice: Large Model Files
-
-This project uses **[Git Large File Storage (LFS)](https://git-lfs.github.com/)** to manage large model files such as:
-
-- `best_mlp.h5`
-- `best_model.keras`
-- `classes.npy`
-- `train_logreg.h5`
-
-These files are required for the Flask demos in the `/flask_deploy/` directory.
-
-> ⚠️ **Before cloning or pulling this repository, please make sure Git LFS is installed on your system.**
-
-#### ✅ To install Git LFS:
-
-**macOS (with Homebrew):**
-```bash
-brew install git-lfs
-git lfs install
-```
-
-**Ubuntu/Debian:**  
-```
-sudo apt update
-sudo apt install git-lfs
-git lfs install
-```
-
-**Windows:**  
-Download and install from  https://git-lfs.github.com  
-Then clone repository as usual:  
-```
-git clone https://github.com/yourusername/your-repo.git
-```
-Git LFS will automatically fetch the required model files when you clone or pull.
