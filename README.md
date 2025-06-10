@@ -145,3 +145,39 @@ python app.py
 ```
 This will provide you with a link http://127.0.0.1:3000 or similar.   
 Click on that link, and you will be able to test all three model predictions for the image you uploaded. 
+
+# Git LFS Notice: Large Model Files
+
+This project uses **[Git Large File Storage (LFS)](https://git-lfs.github.com/)** to manage large model files such as:
+
+- `best_mlp.h5`
+- `best_model.keras`
+- `classes.npy`
+- `train_logreg.h5`
+
+These files are required for the Flask demos in the `/flask_deploy/` directory.
+
+> ⚠️ **Before cloning or pulling this repository, please make sure Git LFS is installed on your system.**
+
+#### ✅ To install Git LFS:
+
+**macOS (with Homebrew):**
+```bash
+brew install git-lfs
+git lfs install
+```
+
+**Ubuntu/Debian:**  
+```
+sudo apt update
+sudo apt install git-lfs
+git lfs install
+```
+
+**Windows:**  
+Download and install from  https://git-lfs.github.com  
+Then clone repository as usual:  
+```
+git clone https://github.com/yourusername/your-repo.git
+```
+Git LFS will automatically fetch the required model files when you clone or pull.
